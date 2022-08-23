@@ -1,5 +1,5 @@
-# SimiLabs 2022
-**A plagiarism/stylometry checker using Python**
+# Hano Strydom Honors Project
+**Facial Expression Recognition Project**
 ____________________________________________________________
 Powered by:
 [![N|Solid](https://www.python.org/static/img/python-logo.png)](https://www.python.org/)
