@@ -1,5 +1,5 @@
-# SimiLabs 2022
-**A plagiarism/stylometry checker using Python**
+# Hano Strydom Honors Project
+**Facial Expression Recognition Project**
 ____________________________________________________________
 Powered by:
 [![N|Solid](https://www.python.org/static/img/python-logo.png)](https://www.python.org/)
@@ -44,7 +44,7 @@ Documentation can be found [here]
 ## License
 - MIT
 
-*Copyright (c) 2022 ISE-Project-2022*
+*Copyright (c) FacialExpressionRecognition
 
 *Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
