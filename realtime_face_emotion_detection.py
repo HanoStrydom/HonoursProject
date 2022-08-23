@@ -126,3 +126,6 @@ while True:
   
 webcam_video_stream.release()
 cv2.destroyAllWindows()
+
+
+#Add text file en add stats
