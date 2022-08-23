@@ -44,7 +44,7 @@ Documentation can be found [here]
 ## License
 - MIT
 
-*Copyright (c) 2022 ISE-Project-2022*
+*Copyright (c) FacialExpressionRecognition
 
 *Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
