@@ -1,7 +1,9 @@
 """
 Honours Project
-
-@author: Hano Strydom  
+@student: NWU - 31597793
+@author: Hano Strydom
+@email: hanostrydom8@gmail.com
+@supervisor: Mnr. Henri van Rensburg
 """
 
 #importing the required libraries
@@ -23,6 +25,7 @@ emotions_label = ('angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutr
 webcam_video_stream = cv2.VideoCapture(0)
 all_face_location = []
 
+'''Sets and inital time'''
 presentDate = datetime.datetime.now()
 initialTime = round(datetime.datetime.timestamp(presentDate))
 
@@ -34,11 +37,11 @@ while True:
     '''This detects smaller / father faces '''
     #all_face_locations = face_recognition.face_locations(current_frame, number_of_times_to_upsample=2, model="hog")
     
+    '''Initialise counters'''
     ConCount = 0
     GoodCount = 0
     NeutralCount = 0
     generalEmotion = ""
-
     startTime = 0
     newUnixTime = 0
 
@@ -76,10 +79,10 @@ while True:
         current_face_image = cv2.GaussianBlur(current_face_image, (99,99), 30)
         current_frame[top_pos:bottom_pos,left_pos:right_pos] = current_face_image
 
-        #More privacy and doesn't show students emotion, replace "student" with emotion_label to show emotions
+        '''Shows individual emotion'''
         cv2.putText(current_frame, emotion_label, (left_pos,bottom_pos), font, 0.5, (255,255,255),1)
+        '''Does not show individual emotion'''
         #cv2.putText(current_frame, "student", (left_pos,bottom_pos), font, 0.5, (255,255,255),1)
-
 
         #General Sentiment
         if(ConCount > GoodCount and ConCount > NeutralCount):
@@ -110,8 +113,7 @@ while True:
             if(NeutralCount > GoodCount and NeutralCount > ConCount):
                 generalEmotion = "Neutral"
             print("General sentiment for the last 5 seconds: " , generalEmotion)  
-            
-
+   
     #Display the number of confused students
     text =  "Confused: " + str(ConCount)
     cv2.putText(current_frame, text, (30,100), font, 3, 0.5, cv2.LINE_AA)   
