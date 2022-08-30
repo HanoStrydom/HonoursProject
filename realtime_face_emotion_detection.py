@@ -19,9 +19,13 @@ from cgi import test
 from tkinter import *
 
 root = Tk()
-myLabel1 = Label(root, text="Hellow Lecturer!")
+root.title('Lecturer Expression Tool')
+root.geometry('310x120+50+50')
+root.resizable(False, False)
+root.eval('tk::PlaceWindow . center')
+myLabel1 = Label(root, text="Welcome Lecturer!",font=('Helvetica', 18, 'bold'))
 myLabel1.pack()
-myLabel2 = Label(root, text="Please enter a time to keep track: ")
+myLabel2 = Label(root, text="Please enter a time to keep track: ",font=('Helvetica', 15,))
 myLabel2.pack()
 
 e = Entry(root, borderwidth=5)
