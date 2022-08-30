@@ -38,8 +38,6 @@ def myClick():
     myVar = e.get()
     faceExpression(int(myVar))
     
-
-
 myButton = Button(root, text="Enter", padx=50, command=myClick)
 myButton.pack()
 
@@ -121,15 +119,22 @@ def faceExpression(myTime):
             '''Does not show individual emotion'''
             #cv2.putText(current_frame, "student", (left_pos,bottom_pos), font, 0.5, (255,255,255),1)
 
+            totalFaces = index + 1
+            percentage = ConCount / totalFaces * 100
+
             #General Sentiment
             if(ConCount > GoodCount and ConCount > NeutralCount):
                 print("General Sentiment is Confused:  " , ConCount)
+                print("Percentage of class confused: " + str(percentage) + "%")
             elif(GoodCount > ConCount and GoodCount > ConCount):
                 print("General Sentiment is Happy: " , GoodCount)
+                print("Percentage of class confused: " + str(percentage) + "%")
             elif(NeutralCount > GoodCount and NeutralCount > ConCount):
                 print("General Sentiment is Neutral: " , NeutralCount)
+                print("Percentage of class confused: " + str(percentage) + "%")
             elif(GoodCount == ConCount):
                 print("General Sentiment is Even: Confused:" , ConCount, " Happy: ", GoodCount)
+                print("Percentage of class confused: " + str(percentage) + "%")
             else:
                 print("No faces detected!")
 
