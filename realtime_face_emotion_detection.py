@@ -168,8 +168,8 @@ def faceExpression(myTime):
                     print("Happy: ", timeHappy)
                     print("Neutral: ", timeNeutral)
                 print("General sentiment for the time selected: " , generalEmotion) 
-                with open('GeneralEmotion.txt', 'a') as f:
-                    f.write("General emotion: " + generalEmotion + " at time: " + str(presentDate) +'\n')
+                with open('GeneralEmotion.csv', 'a') as f:
+                    f.write(str(presentDate)+ ", " + generalEmotion +'\n')
                 timeConfused = 0
                 timeHappy = 0
                 timeNeutral = 0
