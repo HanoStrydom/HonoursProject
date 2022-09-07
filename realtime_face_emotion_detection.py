@@ -7,6 +7,8 @@ Honours Project
 """
 
 #importing the required libraries
+import csv
+import os
 import numpy as np
 import cv2
 from tensorflow.keras.preprocessing import image
@@ -17,6 +19,8 @@ import time
 from ast import Lambda
 from cgi import test
 from tkinter import *
+import matplotlib.pyplot as plt
+import csv
 
 root = Tk()
 root.title('Lecturer Expression Tool')
@@ -76,6 +80,7 @@ def faceExpression(myTime):
         generalEmotion = ""
         startTime = 0
         newUnixTime = 0
+        x = ""
 
         font = cv2.FONT_HERSHEY_DUPLEX
         all_face_locations = face_recognition.face_locations(current_frame, model="hog")
@@ -168,8 +173,20 @@ def faceExpression(myTime):
                     print("Happy: ", timeHappy)
                     print("Neutral: ", timeNeutral)
                 print("General sentiment for the time selected: " , generalEmotion) 
-                with open('GeneralEmotion.csv', 'a') as f:
-                    f.write(str(presentDate)+ ", " + generalEmotion +'\n')
+                
+                #Checks whether GeneralEmotion.csv exists
+                x = str(presentDate).split(" ")
+                if os.path.isfile('GeneralEmotion.csv') == True:
+                    with open('GeneralEmotion.csv', 'a') as csvFile:
+                        csvFile.write(str(x[0])+ ", " + str(x[1]) + ", " + generalEmotion +'\n')
+                    csvFile.close()
+                else:
+                    print("File Created!")
+                    with open('GeneralEmotion.csv', 'w') as csvFile:
+                        csvFile.write("Date, Time, General Emotion" + '\n')
+                        csvFile.write(str(x[0])+ ", " + str(x[1]) + ", " + generalEmotion +'\n')
+                    csvFile.close()
+                                    
                 timeConfused = 0
                 timeHappy = 0
                 timeNeutral = 0
@@ -185,7 +202,31 @@ def faceExpression(myTime):
 
     webcam_video_stream.release()
     cv2.destroyAllWindows()
-
-#Add text file en add stats
-
 root.mainloop()
+
+
+#Show Results
+x = []
+y = []
+with open('GeneralEmotion.csv','r') as csvfile:
+    plots = csv.reader(csvfile, delimiter=',')
+    
+    for row in plots:
+        if row[1] == " Time":
+            continue
+        time = row[1]
+        #Convert time to dateTime    
+        time = time.split(":")
+        print(time)
+        x.append(str(time[0]) + ":" + str(time[1])+ ":" + str(round(float(time[2]),0)))
+        y.append(str(row[2]))
+
+#Plots the data
+plt.plot(x,y, label='Confused')
+plt.xlabel('Time')
+plt.ylabel('Emotion')
+plt.title('General Emotion')
+plt.legend()
+plt.show()
+
+
