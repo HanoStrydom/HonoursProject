@@ -42,8 +42,33 @@ def myClick():
     myVar = e.get()
     faceExpression(int(myVar))
     
+    
 myButton = Button(root, text="Enter", padx=50, command=myClick)
 myButton.pack()
+
+def showResults():
+    x = []
+    y = []
+    with open('GeneralEmotion.csv','r') as csvfile:
+        plots = csv.reader(csvfile, delimiter=',')
+        
+        for row in plots:
+            if row[1] == " Time":
+                continue
+            time = row[1]
+            #Convert time to dateTime    
+            time = time.split(":")
+            x.append(str(time[0]) + ":" + str(time[1])+ ":" + str(round(float(time[2]),0)))
+            y.append(str(row[2]))
+
+    #Plots the data
+    plt.plot(x,y, label='Confused')
+    plt.xlabel('Time')
+    plt.ylabel('Emotion')
+    plt.title('General Emotion')
+    plt.legend()
+    plt.show()
+
 
 def faceExpression(myTime):
     root.destroy()
@@ -202,31 +227,5 @@ def faceExpression(myTime):
 
     webcam_video_stream.release()
     cv2.destroyAllWindows()
+    showResults()
 root.mainloop()
-
-
-#Show Results
-x = []
-y = []
-with open('GeneralEmotion.csv','r') as csvfile:
-    plots = csv.reader(csvfile, delimiter=',')
-    
-    for row in plots:
-        if row[1] == " Time":
-            continue
-        time = row[1]
-        #Convert time to dateTime    
-        time = time.split(":")
-        print(time)
-        x.append(str(time[0]) + ":" + str(time[1])+ ":" + str(round(float(time[2]),0)))
-        y.append(str(row[2]))
-
-#Plots the data
-plt.plot(x,y, label='Confused')
-plt.xlabel('Time')
-plt.ylabel('Emotion')
-plt.title('General Emotion')
-plt.legend()
-plt.show()
-
-
