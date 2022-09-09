@@ -22,6 +22,7 @@ from tkinter import *
 import matplotlib.pyplot as plt
 import csv
 
+#Python user interface that ask for a time when the user wants to see the general sentiment
 root = Tk()
 root.title('Lecturer Expression Tool')
 root.geometry('310x120+50+50')
@@ -29,23 +30,24 @@ root.resizable(False, False)
 root.eval('tk::PlaceWindow . center')
 myLabel1 = Label(root, text="Welcome Lecturer!",font=('Helvetica', 18, 'bold'))
 myLabel1.pack()
-myLabel2 = Label(root, text="Please enter a time to keep track: ",font=('Helvetica', 15,))
+myLabel2 = Label(root, text="Please enter a time to keep track (in seconds): ",font=('Helvetica', 15,))
 myLabel2.pack()
-
 e = Entry(root, borderwidth=5)
 e.pack()
 e.get()
 
 myVar = ""
 
+#Function that will run the program when the button is clicked
 def myClick():
     myVar = e.get()
     faceExpression(int(myVar))
     
-    
+#Button that will run the program
 myButton = Button(root, text="Enter", padx=50, command=myClick)
 myButton.pack()
 
+#Function that will read the .csv file and display on a graph
 def showResults():
     x = []
     y = []
@@ -70,6 +72,7 @@ def showResults():
     plt.show()
 
 
+#The facial expression recognition code that determines the emotion
 def faceExpression(myTime):
     root.destroy()
     '''For the seconds tracking emotion'''
@@ -145,9 +148,9 @@ def faceExpression(myTime):
             current_frame[top_pos:bottom_pos,left_pos:right_pos] = current_face_image
 
             '''Shows individual emotion'''
-            cv2.putText(current_frame, emotion_label, (left_pos,bottom_pos), font, 0.5, (255,255,255),1)
+            #cv2.putText(current_frame, emotion_label, (left_pos,bottom_pos), font, 0.5, (255,255,255),1)
             '''Does not show individual emotion'''
-            #cv2.putText(current_frame, "student", (left_pos,bottom_pos), font, 0.5, (255,255,255),1)
+            cv2.putText(current_frame, "student", (left_pos,bottom_pos), font, 0.5, (255,255,255),1)
 
             totalFaces = index + 1
             percentage = ConCount / totalFaces * 100
