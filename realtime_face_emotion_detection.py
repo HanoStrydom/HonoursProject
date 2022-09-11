@@ -212,7 +212,7 @@ def faceExpression(myTime):
                 else:
                     print("File Created!")
                     with open('GeneralEmotion.csv', 'w') as csvFile:
-                        csvFile.write("Date, Time, General Emotion, Emotion Count, Total Faces" + '\n')
+                        csvFile.write("Date, Time, General Emotion" + '\n')
                         csvFile.write(str(x[0])+ ", " + str(x[1]) + ", " + generalEmotion + '\n')
                     csvFile.close()
                                     
