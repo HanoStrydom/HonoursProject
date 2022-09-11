@@ -25,7 +25,7 @@ import csv
 #Python user interface that ask for a time when the user wants to see the general sentiment
 root = Tk()
 root.title('Lecturer Expression Tool')
-root.geometry('310x120+50+50')
+root.geometry('420x130+50+50')
 root.resizable(False, False)
 root.eval('tk::PlaceWindow . center')
 myLabel1 = Label(root, text="Welcome Lecturer!",font=('Helvetica', 18, 'bold'))
@@ -192,7 +192,7 @@ def faceExpression(myTime):
                     print("Happy: ", timeHappy)
                     print("Neutral: ", timeNeutral)
                 if(timeHappy == timeConfused):
-                    generalEmotion = "Eve n"
+                    generalEmotion = "Even"
                     print("Confused: ", timeConfused)
                     print("Happy: ", timeHappy)
                     print("Neutral: ", timeNeutral)
