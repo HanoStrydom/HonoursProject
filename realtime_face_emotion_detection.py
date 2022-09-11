@@ -80,6 +80,7 @@ def faceExpression(myTime):
     timeHappy = 0
     timeNeutral = 0
     
+    
     #Face expression model initialization
     face_exp_model = model_from_json(open("dataset/facial_expression_model_structure.json", "r").read())
     #load weights into model
@@ -206,13 +207,13 @@ def faceExpression(myTime):
                 x = str(presentDate).split(" ")
                 if os.path.isfile('GeneralEmotion.csv') == True:
                     with open('GeneralEmotion.csv', 'a') as csvFile:
-                        csvFile.write(str(x[0])+ ", " + str(x[1]) + ", " + generalEmotion +'\n')
+                        csvFile.write(str(x[0])+ ", " + str(x[1]) + ", " + generalEmotion +  ", " + '\n')
                     csvFile.close()
                 else:
                     print("File Created!")
                     with open('GeneralEmotion.csv', 'w') as csvFile:
-                        csvFile.write("Date, Time, General Emotion" + '\n')
-                        csvFile.write(str(x[0])+ ", " + str(x[1]) + ", " + generalEmotion +'\n')
+                        csvFile.write("Date, Time, General Emotion, Emotion Count, Total Faces" + '\n')
+                        csvFile.write(str(x[0])+ ", " + str(x[1]) + ", " + generalEmotion +  ", " + '\n')
                     csvFile.close()
                                     
                 timeConfused = 0
