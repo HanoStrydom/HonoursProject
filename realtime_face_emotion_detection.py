@@ -20,7 +20,7 @@ from ast import Lambda
 from cgi import test
 from tkinter import *
 import matplotlib.pyplot as plt
-import csv
+
 
 #Python user interface that ask for a time when the user wants to see the general sentiment
 root = Tk()
