@@ -215,7 +215,9 @@ def faceExpression(myTime):
                         csvFile.write("Date, Time, General Emotion" + '\n')
                         csvFile.write(str(x[0])+ ", " + str(x[1]) + ", " + generalEmotion + '\n')
                     csvFile.close()
-                                    
+
+                  #Lees eers in n array en dan skryf jy dit in die csv file
+
                 timeConfused = 0
                 timeHappy = 0
                 timeNeutral = 0
