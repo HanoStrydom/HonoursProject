@@ -79,7 +79,7 @@ def faceExpression(myTime):
     timeConfused = 0
     timeHappy = 0
     timeNeutral = 0
-    
+    genEmotionArr = []
     
     #Face expression model initialization
     face_exp_model = model_from_json(open("dataset/facial_expression_model_structure.json", "r").read())
@@ -203,20 +203,8 @@ def faceExpression(myTime):
                     print("Neutral: ", timeNeutral)
                 print("General sentiment for the time selected: " , generalEmotion) 
                 
-                #Checks whether GeneralEmotion.csv exists
                 x = str(presentDate).split(" ")
-                if os.path.isfile('GeneralEmotion.csv') == True:
-                    with open('GeneralEmotion.csv', 'a') as csvFile:
-                        csvFile.write(str(x[0])+ ", " + str(x[1]) + ", " + generalEmotion + '\n')
-                    csvFile.close()
-                else:
-                    print("File Created!")
-                    with open('GeneralEmotion.csv', 'w') as csvFile:
-                        csvFile.write("Date, Time, General Emotion" + '\n')
-                        csvFile.write(str(x[0])+ ", " + str(x[1]) + ", " + generalEmotion + '\n')
-                    csvFile.close()
-
-                  #Lees eers in n array en dan skryf jy dit in die csv file
+                genEmotionArr.append(str(x[0])+ ", " + str(x[1]) + ", " + generalEmotion + '\n')
 
                 timeConfused = 0
                 timeHappy = 0
@@ -227,9 +215,23 @@ def faceExpression(myTime):
         cv2.putText(current_frame, text, (30,100), font, 3, 0.5, cv2.LINE_AA)   
         cv2.imshow("Webcam Video ", current_frame)
 
+        
         #Stops the program with 'q'
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
+
+    #Writes the data to the csv file
+    for i in range(len(genEmotionArr)):
+            if os.path.isfile('GeneralEmotion.csv') == True:
+                with open('GeneralEmotion.csv', 'a') as csvFile:
+                    csvFile.write(genEmotionArr[i])
+                csvFile.close()
+            else:
+                print("File Created!")
+                with open('GeneralEmotion.csv', 'w') as csvFile:
+                    csvFile.write("Date, Time, General Emotion" + '\n')
+                    csvFile.write(genEmotionArr[i])
+                csvFile.close()
 
     webcam_video_stream.release()
     cv2.destroyAllWindows()
