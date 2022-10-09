@@ -29,11 +29,9 @@ def faceExpression(myTime):
     genEmotionArr = []
     
     #Face expression model initialization
-    #face_exp_model = model_from_json(open("dataset/facial_expression_model_structure.json", "r").read())
-    face_exp_model = model_from_json(open("TestData/model.json", "r").read())
+    face_exp_model = model_from_json(open("dataset/facial_expression_model_structure.json", "r").read())
     #load weights into model
-    #face_exp_model.load_weights('dataset/facial_expression_model_weights.h5')
-    face_exp_model.load_weights('TestData/model_weights.h5')
+    face_exp_model.load_weights('dataset/facial_expression_model_weights.h5')
     #list of emotion labels
     emotions_label = ('angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral')
 
@@ -77,11 +75,11 @@ def faceExpression(myTime):
             img_pixels /= 255
             
             exp_predictions = face_exp_model.predict(img_pixels)
-            print(exp_predictions)
+            #print(exp_predictions)
             max_index = np.argmax(exp_predictions[0])
-            print(max_index)
+            #print(max_index)
             emotion_label = emotions_label[max_index]
-            print(emotion_label)
+            #print(emotion_label)
             
             #Counts the emotions
             if emotion_label == "fear" or emotion_label == "disgust" or emotion_label == "sad" or emotion_label == "angry":
@@ -167,7 +165,6 @@ def faceExpression(myTime):
         cv2.putText(current_frame, text, (30,100), font, 3, 0.5, cv2.LINE_AA)   
         cv2.imshow("Webcam Video ", current_frame)
 
-        
         #Stops the program with 'q'
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
