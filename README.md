@@ -11,6 +11,11 @@ Powered by:
 | ------ | ------ |
 | [Hano Strydom] | 31597793 |
 
+# Meet the Supervisor:
+| Name | Student Number |
+| ------ | ------ |
+| [Henri van Rensburg] |  |
+
 
 # Research topic
 This study will attempt to fill the gap by providing a way for lecturers to determine how many students understand the current topic at hand, without physically paying attention to the individual students.
@@ -74,4 +79,5 @@ SOFTWARE.*
    [python]: <https://www.python.org/downloads/>
    [Visual Studio Code]: <https://code.visualstudio.com/download>
    [Anaconda]: <https://www.anaconda.com/>
+   [Henri van Rensburg]: <mailto: henri.vanrensburg@nwu.ac.za>
 
