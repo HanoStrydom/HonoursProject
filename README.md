@@ -32,6 +32,7 @@ conda install cv2
 conda install tensorflow
 conda install keras
 conda install face_recognition
+conda install tkinter
 ```
 > The environment in visual studio code must be the 'base':conda environment
 
