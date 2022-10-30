@@ -76,7 +76,7 @@ SOFTWARE.*
 
    [Hano Strydom]: <mailto: hanostrydom8@gmail.com>
    [GitBash]: <https://git-scm.com/downloads>
-   [here]: <https://github.com/HanoStrydom/HonorsArtefact/blob/main/31597793_Scription.docx>
+   [here]: <https://github.com/HanoStrydom/HonoursProject/blob/main/Documentation/31597793_FinalDoc_Terugvoer.docx>
    [python]: <https://www.python.org/downloads/>
    [Visual Studio Code]: <https://code.visualstudio.com/download>
    [Anaconda]: <https://www.anaconda.com/>
