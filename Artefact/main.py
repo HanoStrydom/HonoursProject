@@ -14,8 +14,6 @@ from tensorflow.keras.preprocessing import image
 from keras.models import model_from_json
 import face_recognition
 import datetime
-from ast import Lambda
-from cgi import test
 from tkinter import *
 from Results import showResults
 

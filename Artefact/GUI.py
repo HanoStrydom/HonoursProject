@@ -20,7 +20,11 @@ myVar = ""
 def myClick():
     myVar = e.get()
     root.destroy()
-    faceExpression(int(myVar))
+    try:
+        faceExpression(int(myVar))
+    except:
+        print("Please enter a valid time!")
+    
     
     
 #Button that will run the program
